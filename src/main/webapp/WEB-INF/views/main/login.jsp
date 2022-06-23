@@ -30,7 +30,7 @@
       
       #lgbtn{
       	width: 100%;
-      	background-color:#daccc6;
+      	background: linear-gradient( to right, #B8E9FF, #18A8F1 );
       	font-weight:550;
       }
      hr{
@@ -68,7 +68,7 @@
         
             <div class="text-center p-5">
                   <a href="${appRoot }/main/home">
-                  <img alt="gohome" width="150" src="${appRoot }/resources/img/gohomelogo22.png"></a>
+                  <img alt="triple" width="250" src="${appRoot }/resources/img/triple-logo.png"></a>
             </div>
             
              <div class="row justify-content-center ">
@@ -96,12 +96,12 @@
 				<div class="row justify-content-center text-center m-2">
 					<div class="col-2">
 						<a href="${appRoot }/main/findId" target="_blank">
-							아이디찾기
+							아이디 찾기
 						</a>
 					</div>
 					<div class="col-2">
 						<a href="${appRoot }/main/findPw" target="_blank">
-							비밀번호찾기
+							비밀번호 찾기
 						</a>
 					</div>
 					<div class="col-2">
