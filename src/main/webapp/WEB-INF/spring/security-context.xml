@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 652 쪽 -->
+	<bean id="bcryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<bean id="customUserDetailsService"
+		class="com.team.security.CustomUserDetailsService"></bean>
+
+	<security:http>
+		<security:http-basic />
+
+		<!-- //default-target-url 성공했을때 가는 페이지 -->
+		<security:form-login login-page="/main/login"
+			default-target-url="/main/home" />
+
+		<security:logout />
+
+		<security:csrf disabled="true" />
+
+		<!-- 로그인유지 -->
+		<security:remember-me />
+
+	</security:http>
+
+	<!-- 만들어준 객체를 사용 -->
+	<security:authentication-manager>
+		<security:authentication-provider
+			user-service-ref="customUserDetailsService">
+			<security:password-encoder
+				ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

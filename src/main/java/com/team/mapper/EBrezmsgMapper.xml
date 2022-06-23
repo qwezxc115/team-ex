@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.team.mapper.EBrezmsgMapper">
+
+
+	<!-- 예약 내역 저장   -->
+	<insert id="EBrezmsg" useGeneratedKeys="true" keyProperty="rno" keyColumn="rno">
+		  	INSERT INTO E_rezmsg (reader, rezdate, reztime, writer, content, eno )
+		  	VALUES (#{reader}, #{rezdate}, #{reztime}, #{writer}, #{content}, #{eno})
+	</insert>
+	
+	<!-- 예약 리스트 읽어오기  -->
+	 <select id="getrezlist" resultType="com.team.domain.EBrezmsgVO">
+		  	SELECT r.*, u1.username readerName, u2.username writerName FROM E_rezmsg r JOIN GH_User u1 ON r.reader = u1.userid
+			             JOIN GH_User u2 ON r.writer = u2.userid
+		  	WHERE r.writer = #{writer}
+		  	ORDER BY rno DESC
+	  </select>
+	 
+	 
+	 <!-- 예약 리스트 읽어오기  -->
+	 <select id="getreaderrezlist" resultType="com.team.domain.EBrezmsgVO">
+		  	SELECT r.*, u1.username readerName, u2.username writerName FROM E_rezmsg r JOIN GH_User u1 ON r.reader = u1.userid
+			             JOIN GH_User u2 ON r.writer = u2.userid
+		  	WHERE r.reader = #{reader}
+		  	ORDER BY rno DESC
+	  </select>
+	 
+	 <!-- 예약 내용  읽어오기  --> 
+  	 <select id="readrezmsg" resultType ="com.team.domain.EBrezmsgVO">
+	 
+		  	SELECT 
+		  	 r.rno rno,
+		  	 r.reader reader,
+		  	 r.rezdate rezate,
+		  	 r.reztime reztime,
+		  	 r.writer writer,
+		  	 r.content content,
+		  	 r.regdate regdate,
+		  	 m.username writerName
+		  	FROM  E_rezmsg r LEFT JOIN E_board e ON r.bno = e.bno
+		  	                      JOIN  GH_User m ON r.writer = m.userid
+		  	WHERE r.rno = #{rno}
+	  </select>
+	  
+	  <!--예약 삭제  -->
+	  <delete id="rezdelete">
+			DELETE FROM E_rezmsg WHERE rno = #{rno}
+	  </delete>
+	  
+</mapper>

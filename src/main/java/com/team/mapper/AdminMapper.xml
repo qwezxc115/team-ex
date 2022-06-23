@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.team.mapper.AdminMapper">
+	
+						<!-- 일반회원 관련 -->
+	
+	<!-- 일반회원 리스트조회 -->
+	<select id="getUserlist" resultType="com.team.domain.UserVO" >
+		  SELECT * FROM GH_User u JOIN GH_auth a ON(u.userid = a.userid) where a.auth = "ROLE_USER" order by regdate desc ;
+    </select>
+	
+	<!-- 일반회원 회원추가 -->
+	<insert id="getUserinsert">
+		INSERT INTO GH_User
+		(userid, userpw, username, userPhone, userEmail, useradd)
+		VALUES
+		(#{userid}, #{userpw}, #{userName}, #{userPhone}, #{userEmail}, #{useradd})
+	</insert>
+
+	<!-- 일반회원 권한추가 -->
+	<insert id="getUserinsertAuth">
+		INSERT INTO GH_auth
+		(userid, auth)
+		VALUES
+		(#{userid}, #{auth})
+	</insert>
+	
+	<!--  일반회원 정보 수정  -->
+	<update id="Userupdate">
+	  UPDATE GH_User
+	  SET 
+	      userName = #{userName},
+	      userPhone = #{userPhone},
+	      userEmail = #{userEmail},
+	      useradd = #{useradd},
+	      updatedate = now()
+	  WHERE
+	      userid = #{userid}
+	</update>
+	
+	<!-- 일반회원 회원탈퇴 -->
+	<delete id="Userdelete">
+		DELETE FROM GH_User
+		WHERE userid = #{userid}
+	</delete>
+	
+	
+						<!-- 업체회원 관련 -->
+	
+	<!-- 업체회원 리스트조회 -->
+	<select id="getComplist" resultType="com.team.domain.UserVO" >
+		  SELECT * FROM GH_User WHERE CompanyRegistrationNumber is not NULL order by regdate desc ;
+    </select>							
+	
+	<!-- 업체회원 회원추가 -->
+	<insert id="getCompinsert">
+		INSERT INTO GH_User
+		(userid, userpw, username, userPhone, userEmail, useradd, CompanyRegistrationNumber)
+		VALUES
+		(#{userid}, #{userpw}, #{userName}, #{userPhone}, #{userEmail}, #{useradd}, #{CompanyRegistrationNumber})
+	</insert>
+	
+	<!-- 업체회원 권한추가 -->
+	<insert id="getCompinsertAuth">
+		INSERT INTO GH_auth
+		(userid, auth)
+		VALUES
+		(#{userid}, #{auth})
+	</insert>
+	
+	<!--  업체회원 정보 수정  -->
+	<update id="Compupdate">
+	  UPDATE GH_User
+	  SET 
+	      userName = #{userName},
+	      userPhone = #{userPhone},
+	      userEmail = #{userEmail},
+	      useradd = #{useradd},
+	      updatedate = now()
+	  WHERE
+	      userid = #{userid}
+	</update>
+	
+	<!-- 일반회원 회원탈퇴 -->
+	<delete id="Compdelete">
+		DELETE FROM GH_User
+		WHERE userid = #{userid}
+	</delete>
+	
+	
+						<!-- 상품목록 관련 -->
+	
+	<!-- 상품목록 리스트 -->
+	<select id="getProductlist" resultMap="adminMap">
+		SELECT * FROM S_product p LEFT JOIN S_product_file f ON p.pno = f.pno
+	</select>
+	
+	<resultMap type="com.team.domain.SProductVO" id="adminMap">
+		<id column="pno" property="pno"/>
+		<result column="category" property="category"/>
+		<result column="userid" property="userid"/>
+		<result column="title" property="title"/>
+		<result column="price" property="price"/>
+		<result column="delivery" property="delivery"/>
+		<result column="detail" property="detail"/>
+		<result column="keyword" property="keyword"/>
+		<result column="regdate" property="regdate"/>
+		<result column="updatedate" property="updatedate"/>
+		<collection property="fileName" resultMap="ofileNameMap"></collection>
+	</resultMap>
+
+	
+	<!-- 상품 추가 -->
+	<insert id="getProductinsert">
+		INSERT INTO S_product
+		(title, price, category, detail)
+		VALUES
+		(#{title}, #{price}, #{category}, #{detail})
+	</insert>
+	
+	<!--  상품 정보 수정  -->
+	<update id="Productupdate">
+	  UPDATE S_product
+	  SET 
+	      title = #{title},
+	      price = #{price},
+	      delivery = #{delivery},
+	      detail = #{detail},
+	      updatedate = now()
+	  WHERE
+	      pno = #{pno}
+	</update>
+	
+	<!-- 상품 삭제 -->
+	<delete id="Productdelete">
+		DELETE FROM S_product
+		WHERE pno = #{pno}
+	</delete>
+	
+	
+	
+						<!-- 문의내역 관련 -->
+	
+	<!-- 문의내역 리스트 -->
+	<select id="getOtolist" resultMap="otoMap">
+      SELECT
+         o.qono qono,
+            o.otitle otitle,
+          o.userid userid,
+          o.odetail odetail,
+          o.oregdate oregdate,
+         of.fileName fileName
+         
+      FROM 
+         oto o
+      LEFT JOIN
+         otofile of
+      ON
+         o.qono = of.qono
+      ORDER BY oregdate desc;
+   </select>
+   
+   <resultMap type="com.team.domain.OtoVO" id="otoMap">
+        <id property="qono" column="qono" />
+        <result property="otitle" column="otitle" />
+        <result property="userid" column="userid" />
+        <result property="odetail" column="odetail" />
+       <result property="oregdate" column="oregdate" />
+        <collection property="fileName" resultMap="ofileNameMap"></collection>
+    </resultMap>
+    
+    <resultMap type="string" id="ofileNameMap">
+       <result column="fileName" />
+    </resultMap>
+	
+	<!-- 문의내역 답장하기 -->
+	<insert id="Otoanswer">
+		INSERT INTO otoanswer
+		(qono, content, userid)
+		VALUES
+		(#{qono}, #{content}, #{userid})
+	</insert>
+	
+	
+						<!-- 관리자 관련 -->
+						
+	<!-- 관리자 리스트조회 -->
+	<select id="getAdminlist" resultType="com.team.domain.UserVO" >
+		  SELECT * FROM GH_User u JOIN GH_auth a ON(u.userid = a.userid) where a.auth = "ROLE_ADMIN" order by regdate desc ;
+    </select>	
+    
+    <!-- 관리자회원 회원추가 -->
+	<insert id="getAdmininsert">
+		INSERT INTO GH_User
+		(userid, userpw, username, userPhone, userEmail, useradd)
+		VALUES
+		(#{userid}, #{userpw}, #{userName}, #{userPhone}, #{userEmail}, #{useradd})
+	</insert>
+
+	<!-- 관리자회원 권한추가 -->
+	<insert id="getAdmininsertAuth">
+		INSERT INTO GH_auth
+		(userid, auth)
+		VALUES
+		(#{userid}, #{auth})
+	</insert>				
+	
+	<!--  관리자회원 정보 수정  -->
+	<update id="Adminupdate">
+	  UPDATE GH_User
+	  SET 
+	      userName = #{userName},
+	      userPhone = #{userPhone},
+	      userEmail = #{userEmail},
+	      useradd = #{useradd},
+	      updatedate = now()
+	  WHERE
+	      userid = #{userid}
+	</update>
+	
+	<!-- 관리자회원 회원탈퇴 -->
+	<delete id="Admindelete">
+		DELETE FROM GH_User
+		WHERE userid = #{userid}
+	</delete>		
+	
+	
+
+	
+	
+	
+</mapper>

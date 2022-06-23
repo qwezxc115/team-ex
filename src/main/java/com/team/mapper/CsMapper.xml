@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.team.mapper.CsMapper">
+
+	<!-- 1:1 문의 -->
+	<select id="getotolist" resultType="com.team.domain.OtoVO">
+		
+    	SELECT 
+    		qono qono,
+    		otitle otitle,
+    		userid userid,
+    		odetail odetail,
+    		oregdate oregdate 
+    		   	
+     	FROM oto
+    	 
+   	 	WHERE userid = #{userid}
+
+     	ORDER BY qono DESC
+     
+    	 LIMIT #{cri.from}, #{cri.amount}
+    
+	</select>
+	
+	<insert id="otowriting" useGeneratedKeys="true" keyProperty="qono" keyColumn="qono">
+		INSERT into oto
+		(otitle, userid, odetail)
+		VALUES
+		(#{otitle}, #{userid}, #{odetail} )
+	</insert>
+	
+	<select id="otoreading" resultMap="otoMap">
+		SELECT
+			o.qono qono,
+   			o.otitle otitle,
+    		o.userid userid,
+    		o.odetail odetail,
+    		o.oregdate oregdate,
+			of.fileName fileName,
+			a.userid userid
+			
+		FROM 
+			oto o
+		LEFT JOIN
+			otofile of
+		ON
+			o.qono = of.qono
+		JOIN 
+			GH_User a 
+		ON 
+			o.userid = a.userid 
+		WHERE 
+			o.qono = #{qono};
+	</select>
+	
+	<!-- resultType : 결과를 받을 타입 지정 -->
+	<!-- 페이징 : 게시글 총 갯수 -->
+	<select id="getTotalCountO" resultType="int">
+		SELECT COUNT(*) FROM oto o
+		<!-- <include refid="criteria"></include> -->
+	</select>
+	
+	
+	<!-- 다중 파일 otofile -->
+	  <resultMap type="com.team.domain.OtoVO" id="otoMap">
+	  	<id property="qono" column="qono" />
+	  	<result property="otitle" column="otitle" />
+	  	<result property="userid" column="userid" />
+	  	<result property="odetail" column="odetail" />
+	    <result property="oregdate" column="oregdate" />
+	  	<collection property="fileName" resultMap="ofileNameMap"></collection>
+	  </resultMap>
+	  
+	  <resultMap type="string" id="ofileNameMap">
+	  	<result column="fileName" />
+	  </resultMap>
+	
+	<delete id="otodelete">
+		DELETE FROM oto
+		WHERE qono= #{qono};
+	</delete>
+	
+	<select id="otoanswer" resultType="com.team.domain.OtoAnswerVO">
+		SELECT * FROM otoanswer WHERE qono = #{qono};
+	</select>
+	
+	
+	
+	<!-- 공지사항 -->
+	
+	<select id="getNoticeList" resultType="com.team.domain.NoticeVO">
+		<![CDATA[
+    	SELECT 
+    		nno nno,
+    		ntitle ntitle,
+    		userid userid,
+    		ndetail ndetail,
+    		nregdate nregdate  
+    	  	
+     	FROM notice
+    	 
+     	ORDER BY nno DESC
+     
+    	 LIMIT #{from}, #{amount}
+    ]]>
+	</select>
+	
+	<!-- resultType : 결과를 받을 타입 지정 -->
+	<!-- 페이징 : 게시글 총 갯수 -->
+	<select id="getTotalCountN" resultType="int">
+		SELECT COUNT(*) FROM notice n
+		<!-- <include refid="criteria"></include> -->
+	</select>
+	
+	<insert id="noticeWriting" useGeneratedKeys="true" keyProperty="nno" keyColumn="nno">
+		INSERT INTO notice
+		(ntitle, userid, ndetail)
+		VALUES
+		(#{ntitle}, #{userid}, #{ndetail} )
+	</insert>
+	
+	<select id="noticeReading" resultMap="noticeMap">
+		SELECT
+			n.nno nno,
+			n.ntitle ntitle,
+			n.userid userid,
+			n.ndetail ndetail,
+			n.nregdate nregdate,
+			nf.fileName fileName,
+			a.userid userid
+		FROM
+			notice n 
+		LEFT JOIN
+			notice_file nf
+		ON
+			n.nno = nf.nno
+		JOIN 
+			GH_User a 
+		ON 
+			n.userid = a.userid 	
+		WHERE
+			n.nno = #{nno};
+	</select>
+	
+	<update id="noticeModify">
+	UPDATE notice
+
+	SET
+		ntitle = #{ntitle},
+		ndetail = #{ndetail},
+		userid = #{userid}	
+		
+	WHERE
+		nno = #{nno}
+	  </update>
+	
+	<delete id="noticeDelete">
+		DELETE FROM notice
+		WHERE nno= #{nno};
+	</delete>
+
+	  <!-- 메인공지사항 글조회  -->
+	<select id="getNoticeMainList" resultType="com.team.domain.NoticeVO">
+		SELECT nno,
+		      ntitle,
+		      userid,
+		      ndetail,
+		      nregdate
+		FROM notice
+		ORDER BY nregdate DESC
+		LIMIT 5;
+	 </select>
+
+
+
+	<!-- 다중 파일 notice_file -->
+	  <resultMap type="com.team.domain.NoticeVO" id="noticeMap">
+	  	<id property="nno" column="nno" />
+	  	<result property="ntitle" column="ntitle" />
+	  	<result property="userid" column="userid" />
+	  	<result property="ndetail" column="ndetail" />
+	    <result property="nregdate" column="nregdate" />
+	  	<collection property="fileName" resultMap="fileNameMap"></collection>
+	  </resultMap>
+	  
+	  <resultMap type="string" id="fileNameMap">
+	  	<result column="fileName" />
+	  </resultMap>
+	
+	
+</mapper>

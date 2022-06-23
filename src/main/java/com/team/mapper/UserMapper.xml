@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.team.mapper.UserMapper">
+
+
+	<!-- 개인회원  데이터 추가  -->
+	<insert id="insert">
+		INSERT INTO GH_User
+		(userid, userpw, username, userPhone, userEmail)
+		VALUES
+		(#{userid}, #{userpw}, #{userName}, #{userPhone}, #{userEmail})
+	</insert>
+
+	<insert id="insertAuth">
+		INSERT INTO GH_auth
+		(userid, auth)
+		VALUES
+		(#{userid}, #{auth})
+	</insert>
+	
+	<!-- 기업 데이터 추가  -->
+	<insert id="insertB">
+		INSERT INTO GH_User
+		(userid, userpw, username, userPhone, userEmail, CompanyRegistrationNumber)
+		VALUES
+		(#{userid}, #{userpw}, #{userName}, #{userPhone}, #{userEmail}, #{CompanyRegistrationNumber})
+	</insert>
+	
+	<!--  정보 수정  -->
+	<update id="update">
+	  UPDATE GH_User
+	  SET 
+	      userName = #{userName},
+	      userPhone = #{userPhone},
+	      userEmail = #{userEmail},
+	      useradd = #{useradd},
+	      updatedate = now()
+	  WHERE
+	      userid = #{userid}
+   </update>
+   
+   <!-- 비밀번호 수정  -->
+   <update id="modifyPassword">
+      UPDATE GH_User
+      SET userpw = #{userpw}
+      WHERE userid = #{userid}
+   </update>
+   
+   
+   
+   <!--  권한 지우기  -->
+	<!-- <delete id="removeAuth">
+		DELETE FROM  GH_auth
+		WHERE userid = #{userid}
+	</delete> -->
+	
+	<!-- 회원 탈퇴  -->
+	<delete id="remove">
+		DELETE FROM  GH_User
+		WHERE userid = #{userid}
+	</delete>
+	
+	
+	<!-- 데이터 읽어오기   -->
+	<select id="read" resultMap="userMap" >
+		  SELECT 
+			m.userid userid,
+			m.userpw userpw,
+			m.username username,
+			m.userPhone userPhone,
+			m.CompanyRegistrationNumber CompanyRegistrationNumber,
+			m.userEmail userEmail,
+			m.useradd useradd,
+			m.enabled enabled,
+			m.regdate regdate,
+			m.updateDate updateDate,
+			m.userpoint userpoint,
+			m.spendpoint spendpoint,
+			a.auth auth
+		  FROM 
+		    GH_User m LEFT JOIN GH_auth a ON m.userid = a.userid
+		  WHERE
+		   m.userid = #{userid} AND enabled = 1
+
+     </select>
+     
+ 
+
+ 
+	<!-- 아이디 찾기 -->
+	<select id="findId" resultMap="userMap">
+			SELECT 
+			 *
+			FROM GH_User
+			WHERE username = #{userName} AND userphone = #{userPhone}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="findPw" resultMap="userMap">
+			SELECT 
+			 *
+			FROM GH_User
+			WHERE userid = #{userid}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updatePw" >
+			UPDATE GH_User SET userpw = #{userpw} where userid = #{userid}
+	</update>
+
+	<!-- 포인트 업데이트 -->
+	<update id="updatePoint" >
+			UPDATE GH_User 
+			SET userpoint = userpoint - #{spendpoint}
+			WHERE userid = #{userid}
+	</update> 
+	 
+	<update id="updateSpendPoint" >
+			UPDATE GH_User 
+			SET spendpoint = #{spendpoint}
+			WHERE userid = #{userid}
+	</update> 	 
+	 
+	 
+	<!-- 책 662쪽 -->
+	  <resultMap type="com.team.domain.UserVO" id="userMap">
+	  	<id property="userid" column="userid" />
+	  	<result property="userpw" column="userpw" />
+	  	<result property="userName" column="username" />
+	  	<result property="userPhone" column="userPhone" />
+	  	<result property="userEmail" column="userEmail" />
+	  	<result property="CompanyRegistrationNumber" column="CompanyRegistrationNumber" />
+	  	<result property="useradd" column="useradd" />
+	  	<result property="regdate" column="regdate" />
+	  	<result property="updateDate" column="updateDate" />
+	  	<result property="enabled" column="enabled" />
+	  	<result property="userpoint" column="userpoint" />
+	  	<result property="spendpoint" column="spendpoint" />
+	  	<collection property="authList" resultMap="authMap" />
+	  </resultMap>
+	  <resultMap type="com.team.domain.AuthVO" id="authMap">
+	  	<result property="userid" column="userid" />
+	  	<result property="auth" column="auth" />
+	  </resultMap>
+</mapper>

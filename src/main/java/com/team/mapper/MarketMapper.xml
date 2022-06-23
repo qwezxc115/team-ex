@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.team.mapper.MarketMapper">
+
+	<!-- 데이터 추가  -->
+	<insert id="insert">
+		INSERT INTO market
+		(mwriter, mtitle, mprice, mdetail, maddress, mstate, msold)
+		VALUES
+		(#{mwriter}, #{mtitle}, #{mprice}, #{mdetail}, #{maddress}, #{mstate}, #{msold})
+	</insert>
+
+
+	<!-- 왜 필요한가 알아보자 -->
+	<insert id="insertSelectKey" useGeneratedKeys="true" keyProperty="mno" keyColumn="mno">
+		INSERT INTO market (mwriter, mtitle, mprice, mdetail, maddress, mstate, msold)
+		VALUES (#{mwriter}, #{mtitle}, #{mprice}, #{mdetail}, #{maddress}, #{mstate}, #{msold})
+	</insert>
+
+
+	<!-- 데이터 조회   -->
+	<select id="read" resultMap="marketMap" >
+         SELECT 
+           m.mno mno,
+           m.mwriter mwriter,
+           m.mtitle mtitle,
+           m.mprice mprice,
+           m.mdetail mdetail,
+           m.mstate mstate,
+	       m.msold msold,
+           m.mregdate mregdate,
+           m.maddress maddress,
+           mf.fileName fileName,
+           a.userid userid
+         FROM 
+           market m LEFT JOIN market_file mf ON m.mno = mf.mno
+                          JOIN GH_User a ON m.mwriter = a.userid
+         WHERE
+           m.mno = #{mno}
+    </select> 
+
+	
+	<!-- 데이터 수정 -->
+	<update id="update">
+	  	UPDATE market	  	
+	  	SET
+	  	    mtitle = #{mtitle}, 
+	  	    mprice = #{mprice},
+	  	    mdetail = #{mdetail},
+	  	    mstate = #{mstate},
+	  	    msold = #{msold},
+	  	    maddress = #{maddress}	  	    
+	  	WHERE
+	  	    mno = #{mno} 
+	</update>
+
+
+	<!-- 데이터 삭제 -->
+	<delete id="delete">
+  		DELETE FROM market WHERE mno = #{mno}
+	</delete>
+
+
+ 	<!-- 데이터 리스트에 담기 -->
+	<select id="getList" resultType="com.team.domain.MarketVO">
+      <![CDATA[   
+	    SELECT 
+	    	mno mno,
+	    	mwriter mwriter,
+	    	mtitle mtitle,
+	    	mprice mprice,
+	    	mdetail mdetail,
+	    	mstate mstate,
+	    	msold msold,
+	    	mregdate mregdate,
+	    	maddress maddress
+	
+	     FROM market
+	     
+	     WHERE mno > 0 ORDER BY mno DESC     
+      ]]>   
+	</select> 
+
+
+	<!-- 페이징 : 게시글 총 갯수 -->
+	<select id="getTotalCount" resultType="int"> 
+  		SELECT COUNT(*) FROM market
+	</select> 
+ 
+	<!-- 페이징 리스트 -->
+	<select id="getListWithPaging" resultMap="marketMap">
+      <![CDATA[    
+	    SELECT 
+	    	m.mno mno,
+	    	m.mwriter mwriter,
+	    	m.mtitle mtitle,
+	    	m.mprice mprice,
+	    	m.mdetail mdetail,
+	    	m.mstate mstate,
+	    	m.msold msold,
+	    	m.mregdate mregdate,
+	    	m.maddress maddress,
+	    	f.fileName fileName
+	    	
+	     FROM market m LEFT JOIN market_file f ON m.mno = f.mno	     
+	     ORDER BY mno DESC
+	     
+	     LIMIT #{from}, #{amount}     
+      ]]>    
+	</select>
+	
+	<!-- 마이페이지 마켓편 -->
+	<select id="getmkList" resultType="com.team.domain.MarketVO">
+	  	SELECT * FROM market
+	  	WHERE mwriter = #{mwriter}
+	  	ORDER BY mno DESC
+	</select>
+	
+	
+	<!-- 계정 삭제시 게시물 삭제 -->
+	<delete id="removeByUserid">
+		DELETE FROM market
+		WHERE mwriter = #{userid}
+	</delete>
+
+	<!-- 메인중고마켓 게시글조회  -->
+	<select id="getMarketMainList" resultMap="marketMap">
+		SELECT 
+		m.mno mno,
+	    	m.mwriter mwriter,
+	    	m.mtitle mtitle,
+	    	m.mprice mprice,
+	    	m.mdetail mdetail,
+	    	m.mstate mstate,
+	    	m.msold msold,
+	    	m.mregdate mregdate,
+	    	m.maddress maddress,
+	    	f.fileName fileName
+	    	
+	     FROM market m LEFT JOIN market_file f ON m.mno = f.mno	 
+		ORDER BY mregdate DESC
+		LIMIT 4;
+	 </select>
+
+
+
+	  <resultMap type="com.team.domain.MarketVO" id="marketMap">
+          <id property="mno" column="mno" />
+          <result property="mwriter" column="mwriter" />
+          <result property="mtitle" column="mtitle" />
+          <result property="mprice" column="mprice" />
+          <result property="mdetail" column="mdetail" />
+          <result property="mstate" column="mstate" />
+          <result property="msold" column="msold" />
+          <result property="mregdate" column="mregdate" />
+          <result property="maddress" column="maddress" />
+          <collection property="fileName" resultMap="fileNameMap"></collection>
+      </resultMap>
+
+      <resultMap type="string" id="fileNameMap">
+          <result column="fileName" />
+      </resultMap>
+</mapper>
+
+
+

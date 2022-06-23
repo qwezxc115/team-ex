@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.team.mapper.CBFileMapper">
+
+
+	<insert id="cbfinsert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		INSERT INTO C_board_file (bno, fileName)
+		VALUES (#{bno}, #{fileName})
+		
+	</insert>
+	
+	
+	
+	<delete id="cbfdeleteBybno">
+		DELETE FROM C_board_file WHERE bno = #{bno}
+	</delete>
+
+
+<!-- 	<delete id="cbfremoveByUserid">
+		DELETE FROM C_board_file
+		WHERE bno IN(
+			SELECT bno FROM C_board
+			WHERE writer = #{userid}
+		)
+	</delete>
+	 -->
+
+
+	  
+</mapper>
