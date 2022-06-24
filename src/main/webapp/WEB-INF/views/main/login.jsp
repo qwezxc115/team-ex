@@ -30,12 +30,16 @@
       
       #lgbtn{
       	width: 100%;
-      	background: linear-gradient( to right, #B8E9FF, #18A8F1 );
+      	background: linear-gradient(to right, #B8E9FF, #18A8F1 );
+      	-webkit-background-clip: border-box;
       	font-weight:550;
+
       }
+      
      hr{
      	height:2px;
      }
+     
 </style>
 
 <script type="text/javascript">

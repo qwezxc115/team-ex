@@ -22,6 +22,7 @@
     
 </style>
 
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>공지사항 글보기</title>
 </head>
 <body>

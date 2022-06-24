@@ -4,11 +4,17 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <script>
-	$(function() {
+	$(document).ready(function() {
 		//로그아웃 동작 
 		$("#navbar-logout-link").click(function(e) {
 			e.preventDefault();
 			$("#navbar-logout-form").submit();
+		});
+		
+		$("#booking").click(function() {
+			alert("Comming Soon");
+			$("#input-title").focus();
+			return false;
 		});
 
 	})
@@ -123,7 +129,7 @@
 <div class="navbar row justify-content-center p-0">
 	<div class="col-md-3 text-center p-0">
 		<a class="navbar-brand" href="${appRoot}/main/home">
-			<img alt="gohome-logo" width="250"
+			<img alt="triple-logo" width="250"
 				src="${appRoot }/resources/img/triple-logo.png">
 		</a>
 	</div>
@@ -150,7 +156,7 @@
 
 			<li class="nav-item dropdown">
 				<a class="nav-link" href="${appRoot }/store/home" role="button"
-					aria-expanded="false"> 스토어 </a>
+					aria-expanded="false"> 소개 </a>
 			</li>
 
 			<li class="nav-item dropdown">
@@ -163,19 +169,17 @@
 						<a class="dropdown-item" href="${appRoot}/community/cbhome">자유게시판
 						</a>
 					</li>
-					<li>
-						<a class="dropdown-item" href="${appRoot }/market/home">중고마켓 </a>
-					</li>
+
 					<li>
 						<hr class="dropdown-divider">
 					</li>
 				</ul>
 			</li>
-			<!-- 업체 서브 빠이빠이  -->
 
+			<!-- 업체 서브 빠이빠이  -->
 			<li class="nav-item dropdown">
-				<a class="nav-link" href="${appRoot }/experts/ehome" role="button"
-					aria-expanded="false"> 업체 </a>
+				<a id="booking" class="nav-link" href="#" role="button"
+					aria-expanded="false"> 숙소 </a>
 
 			</li>
 

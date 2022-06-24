@@ -54,7 +54,9 @@ request.setCharacterEncoding("utf-8");
 
     .at{
     	font-size:30px;
-    	color: #6d0d27;
+    	background: linear-gradient(to right, #B8E9FF, #18A8F1);
+    	color: transparent;
+    	-webkit-background-clip: text;
     }
     
     .st{
@@ -80,49 +82,21 @@ request.setCharacterEncoding("utf-8");
 		<nb:navbar></nb:navbar>
 
 		<div class=".ba_bg" >
-	      <a href="${appRoot }/main/tos"><img src="${appRoot }/resources/img/store_01.png" class="d-block w-100"  id="carousel-size"></a>
+	      <a href="${appRoot }/main/tos"><img src="${appRoot }/resources/img/main-banner.png" class="d-block w-100"  id="carousel-size"></a>
 	    </div>
 	    
+	    <hr />
+	    
 		<div class="text-center">
-			<a class="navbar-brand at" href="${appRoot }/store/home">스토어</a>
+			<a class="navbar-brand at" href="${appRoot }/store/home">About Us</a>
 		</div>
-		<p class="text-center">요즘 뜨는 상품 ! 이 상품들 어때요  ~?</p>
-		<div class="row row-cols-md-4">
-			<!-- 상품 -->
-			<c:forEach items="${storelist }" var="store">
-				<c:url value="/store/detail" var="getUrl">
-					<c:param name="pno" value="${store.pno }" />
-				</c:url>
-
-				<a class="nav-link" href="${getUrl}">
-					<div class="col mb-3">
-						<div class="card card_s text-center">
-							<div id="imgsize" class="text-center" >
-					 			<img class="imgview" src="${imgRoot}store/${store.pno }/${store.fileName[0]}" class="card-img-top" >
-							</div>
-
-							<div class="card-body text-center">
-								<input type="hidden" class="card-text" value="${store.pno }" />
-								<div class="card-title">상품명 : ${store.title }</div>
-							</div>
-
-							<div class="form-group " id="card-detail">
-								<div class="card-text" style="text-align: center">
-									가격 :
-									<fmt:formatNumber pattern="#,###원" value="${store.price }" />
-								</div>
-							</div>
-							<hr class="m-0">
-							<div class="card-add text-center p-2" >${store.delivery }</div>
-						</div>
-					</div>
-				</a>
-			</c:forEach>
-		</div>
+		<p class="text-center">트리플에 대해서 궁금하신가요 ?</p>
+		
+		<hr />
 		
 		<div class="board_bg text-center ">
 		
-			<h3 class="p-4">우리들의 소통 공간 </h3>
+			<h3 class="p-4">우리들의 여행 공간 </h3>
 			
 		</div>
 		<div class="row row-cols-2 m-0">
@@ -191,57 +165,13 @@ request.setCharacterEncoding("utf-8");
 		</div>
 
 		<br>
+ 
 		
-		<div class=".ba_bg" >
-	      <a href="${appRoot }/market/home"><img src="${appRoot }/resources/img/market_01.png" class="d-block w-100"  id="carousel-size"></a>
-	    </div>
-	    
-	    <br>
-		<div class="text-center">
-		<a class="navbar-brand at" href="${appRoot }/market/home">중고마켓</a>
-		</div>
-		<p class="text-center">버리기 애매한 물건들!  이제 고집 중고마켓으로 오세요 ~ </p>
-		<div class="container">
-			<div >
-				<div class="row row-cols-md-4">
-					<!-- 상품 -->
-					<c:forEach items="${marketlist }" var="market">
-						<c:url value="/market/detail" var="getUrl">
-							<c:param name="mno" value="${market.mno }" />
-						</c:url>
-						<a class="nav-link" href="${getUrl}">
-							<div class="col mb-4">
-								<div class="card text-center" >
-								
-									<div id="imgtop" >
-						 				<img class="imgview" src="${imgRoot}market/${market.mno }/${market.fileName[0]}" class="card-img-top" >
-									</div>
-									
-									<div class="card-body" style="text-align: center">
-										<input type="hidden" class="card-text" value="${market.mno }" />
-										<div class="card-title">상품명 : ${market.mtitle }</div>
-									</div>
-
-									<div class="form-group" id="card-detail"
-										style="text-align: center">
-										<span class="card-text">가격 :
-										 <fmt:formatNumber pattern="#,###원" value="${market.mprice }" />
-										</span> 
-									</div>
-									<p class="card-time-before" >${market.mregdate.time }</p>
-									<hr class="m-0">
-									<div class="card-add text-center p-2" >거래지역 :${market.maddress }</div>
-								</div>
-							</div>
-						</a>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
+		<hr />
 
 	
 		<div class="text-center">
-			<h4>고집으로 오는 길 ~</h4>
+			<h4>트리플로 오는 길 ~</h4>
 		<div class="google-map">
 			<iframe
 				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.352718627358!2d127.02827121611186!3d37.49959833571472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15796fe3091%3A0xaa658b05561b79ab!2z7ISc7Jq47Yq567OE7IucIOqwleuCqOq1rCDsl63sgrzrj5kg7YWM7Zek656A66GcN-q4uCA3!5e0!3m2!1sko!2skr!4v1629262397606!5m2!1sko!2skr"

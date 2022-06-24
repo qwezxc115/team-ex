@@ -63,6 +63,7 @@ $(document).ready(function() {
 
 </script>
 
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>상세페이지</title>
 </head>
 <body>

@@ -24,6 +24,8 @@
     }
     
 </style>
+
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>1:1문의 글 보기</title>
 </head>
 <body>

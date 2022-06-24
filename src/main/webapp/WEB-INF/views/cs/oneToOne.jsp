@@ -32,6 +32,7 @@ $(document).ready(function() {
 });
 </script>
 
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>1:1문의</title>
 </head>
 <body>

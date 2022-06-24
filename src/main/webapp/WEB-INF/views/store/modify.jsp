@@ -12,7 +12,7 @@
 <head>
 
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
-
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>Insert title here</title>
 
 <script>

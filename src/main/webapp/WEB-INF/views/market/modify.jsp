@@ -23,8 +23,8 @@ max-width : 100%;
 
 
 
-
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
+<title>글 수정</title>
 
 <script>
 $(document).ready(function() {

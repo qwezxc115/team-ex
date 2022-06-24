@@ -32,7 +32,8 @@
 			background-color: #6d0d27;
 		}
 		.signupbtn{
-			background-color: #6d0d27;
+			background: linear-gradient(to right, #B8E9FF, #18A8F1 );
+			-webkit-background-clip: border-box;
 			color:#fff;
 		}
 		.signupbtn:hover{
@@ -199,7 +200,7 @@
 		
 				<div class="text-center p-3">
 		               <a href="${appRoot }/main/home">
-		              <img alt="gohome" width="150" src="${appRoot }/resources/img/gohomelogo22.png"></a>
+		              <img alt="triple" width="200" src="${appRoot }/resources/img/triple-logo.png"></a>
 		        </div>
 		        
 				<div class="jumbotron" >
@@ -257,12 +258,7 @@
 			                    <button class="btn signupbtn" type="submit" id="signbtn">회원가입</button>
 			                    <a class="btn bkbtn" style="float: right;" type="button" href="${appRoot}/main/login">취소</a>
 			                </div>
-			           
-							<div style = "text-align:right;">
-								<nav class="nav flex-column">
-		  							<a class="nav-link active" href="${appRoot }/main/signupB"><i class="fas fa-user-tie"></i> 혹시 기업회원이신가요?</a>
-								</nav>
-							</div>
+
 							
 		          	  </form>
 		            </div>

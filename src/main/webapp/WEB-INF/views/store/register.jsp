@@ -41,6 +41,7 @@ function numCheck(selector) {
 });
 </script>
 
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>상품등록</title>
 </head>
 <body>

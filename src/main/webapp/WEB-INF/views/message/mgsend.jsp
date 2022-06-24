@@ -17,6 +17,8 @@
 	vertical-align: middle;
 }
 </style>
+
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>쪽지함</title>
 <script>
 $(function() {

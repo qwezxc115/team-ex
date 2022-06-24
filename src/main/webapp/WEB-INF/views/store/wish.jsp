@@ -10,6 +10,7 @@
 
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp"%>
 
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>장바구니</title>
 </head>
 <body>

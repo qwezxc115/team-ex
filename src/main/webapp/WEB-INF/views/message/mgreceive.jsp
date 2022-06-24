@@ -29,6 +29,8 @@
 		});
 	})
 </script>
+
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>쪽지함</title>
 </head>
 <body>

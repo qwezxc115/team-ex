@@ -24,7 +24,7 @@
 </style>
 
 
-
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>중고마켓 글쓰기</title>
 </head>
 <body>

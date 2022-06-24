@@ -104,6 +104,7 @@ width: 160px;
 
 </script>
 
+<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>스토어 </title>
 
 </head>
