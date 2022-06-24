@@ -33,7 +33,7 @@
 		}
 		.signupbtn{
 			background: linear-gradient(to right, #B8E9FF, #18A8F1 );
-			-webkit-background-clip: border-box;
+			border: none;
 			color:#fff;
 		}
 		.signupbtn:hover{
