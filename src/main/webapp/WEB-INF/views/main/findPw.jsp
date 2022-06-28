@@ -22,11 +22,13 @@
       	width: 100%;
       	background-color:#daccc6;
       	font-weight:550;
+      	border: none;
       }
       
         #findpwbtn:hover {
-      	background-color: #6d0d27;
-      	color:#fff;
+      	width: 100%;
+      	background: linear-gradient(to right, #B8E9FF, #18A8F1 );
+      	border: none;
       }
       
      
@@ -60,9 +62,9 @@
 <body style="background-color: #ececee;">
 <div class="container">
 	<div class="jumbotron" style="background-color:#fff;">
-		<div class="text-center p-5">
+		<div class="text-center p-3">
             <a href="${appRoot }/main/home">
-             <img alt="gohome" width="150" src="${appRoot }/resources/img/gohomelogo22.png"></a>
+             <img alt="gohome" width="250" src="${appRoot }/resources/img/triple-logo.png"></a>
         </div>
         
 		<!-- 비밀번호 찾기 -->

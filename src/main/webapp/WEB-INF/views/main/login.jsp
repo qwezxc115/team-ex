@@ -70,7 +70,7 @@
 	<div class="container " >
         <div class="jumbotron" style="background-color:#fff;">
         
-            <div class="text-center p-5">
+            <div class="text-center p-3">
                   <a href="${appRoot }/main/home">
                   <img alt="triple" width="250" src="${appRoot }/resources/img/triple-logo.png"></a>
             </div>

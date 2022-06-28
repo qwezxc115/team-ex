@@ -212,7 +212,7 @@
 		<!-- 상단 메뉴바 -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  <a class="navbar-brand" href="${appRoot}/main/home">
-			<img alt="gohome-logo" width="100" src="${appRoot }/resources/img/gohomelogo22.png">
+			<img alt="triple-logo" width="100" src="${appRoot }/resources/img/triple-logo.png">
 		  </a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
@@ -222,12 +222,6 @@
 		    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 		      <li class="nav-item active">
 		        <a class="nav-link" href="${appRoot }/admin/home">회원 목록 <span class="sr-only">(current)</span> </a>
-		      </li>
-		      <li class="nav-item ">
-		        <a class="nav-link" href="${appRoot }/admin/complist">업체 목록</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="${appRoot }/admin/productlist">상품 목록</a>
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="${appRoot }/admin/otolist">문의내역 목록</a>

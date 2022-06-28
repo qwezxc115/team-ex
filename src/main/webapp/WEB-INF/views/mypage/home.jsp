@@ -14,7 +14,8 @@
 
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp"%>
 
-<link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
+<link rel="shortcut icon" type="image/x-icon"
+	href="${appRoot }/resources/img/triple.png">
 <title>마이페이지</title>
 
 <style type="text/css">
@@ -32,11 +33,14 @@ html, body {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-	background-color: #6d0d27;
+	background: linear-gradient(to right, #B8E9FF, #18A8F1);
+	border: none;
 }
 
 .cl {
-	color: #6d0d27;
+	background: linear-gradient(to right, #B8E9FF, #18A8F1);
+	color: transparent;
+	-webkit-background-clip: text;
 }
 
 .cth {
@@ -45,12 +49,14 @@ html, body {
 }
 
 .btncl {
-	color: #6d0d27;
+	background: linear-gradient(to right, #B8E9FF, #18A8F1);
+	color: transparent;
+	-webkit-background-clip: text;
 }
 
 #pills-home-tab, #pills-profile-tab, #pills-experts-tab {
 	background-color: transparent;
-	color: #6d0d27;
+	color: #000000;
 }
 </style>
 
