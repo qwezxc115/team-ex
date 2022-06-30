@@ -40,6 +40,10 @@
      	height:2px;
      }
      
+     #idinput, #pwinput {
+     	font-size: 1.3rem;
+     }
+     
 </style>
 
 <script type="text/javascript">
