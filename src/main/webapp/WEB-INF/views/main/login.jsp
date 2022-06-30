@@ -33,6 +33,7 @@
       	background: linear-gradient(to right, #B8E9FF, #18A8F1 );
       	border: none;
       	font-weight:550;
+      	font-size: 1.3rem;
 
       }
       
@@ -63,9 +64,7 @@
 				}
 				
 			});
-			
-				
-			
+					
 		})
 </script>
 </head>

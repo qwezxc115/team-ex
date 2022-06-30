@@ -34,20 +34,18 @@
       
        #findidbtn{
       	width: 100%;
-      	background-color:#daccc6;
-      	font-weight:550;
-      	border: none;
-      }
-      
-        #findidbtn:hover {
-      	width: 100%;
       	background: linear-gradient(to right, #B8E9FF, #18A8F1 );
       	border: none;
+      	font-weight:550;
+      	font-size: 1.3rem;
       }
-      
      
      hr{
      	height:2px;
+     }
+     
+     #nameinput, #phoneinput {
+     	font-size: 1.3rem;
      }
 </style>
 
@@ -92,11 +90,11 @@
 					<!-- 이름과 전화번호 입력 -->
 					<div class="form-label-group">
 						<label for="userName" ></label>				
-						<input type="text" id="nameinput" class="form-control" name="userName" placeholder="Name"  />
+						<input type="text" id="nameinput" class="form-control" name="userName" placeholder="이름"  />
 					</div>
 					<div class="form-label-group">
 						<label for="userPhone"></label>
-						<input type="text" id="phoneinput" class="form-control" name="userPhone" placeholder="Phone" />
+						<input type="text" id="phoneinput" class="form-control" name="userPhone" placeholder="전화번호" />
 					</div>
 
 					<!-- 입력 값 전송 -->

@@ -204,7 +204,6 @@ html, body {
 	</div>
 
 
-
 	<!-- 회원탈퇴시  기존패스워드 확인 후 탈퇴하기   (모달 !)  -->
 	<div class="modal fade" id="password-modal">
 		<div class="modal-dialog">

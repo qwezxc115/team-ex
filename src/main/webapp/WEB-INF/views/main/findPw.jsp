@@ -20,20 +20,18 @@
       
        #findpwbtn{
       	width: 100%;
-      	background-color:#daccc6;
-      	font-weight:550;
-      	border: none;
-      }
-      
-        #findpwbtn:hover {
-      	width: 100%;
       	background: linear-gradient(to right, #B8E9FF, #18A8F1 );
       	border: none;
-      }
-      
+      	font-weight:550;
+      	font-size: 1.3rem;
+      }      
      
      hr{
      	height:2px;
+     }
+     
+     #idinput, #emailinput {
+     	font-size: 1.3rem;
      }
 </style>
 
@@ -74,13 +72,13 @@
 				<!-- 아이디 & 이메일 입력 -->
 				<div class="form-label-group">
 					<label for="userid"></label>
-					<input type="text" id="idinput" name="userid" class="form-control" placeholder="ID" />
+					<input type="text" id="idinput" name="userid" class="form-control" placeholder="아이디" />
 					
 				</div>
 				
 				<div class="form-label-group">
 					<label for="userEmail"></label>
-					<input type="text" id="emailinput" name="userEmail" class="form-control" placeholder="Email"/>
+					<input type="text" id="emailinput" name="userEmail" class="form-control" placeholder="이메일"/>
 					
 				</div>
 		
