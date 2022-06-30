@@ -190,7 +190,7 @@ html, body {
 						</form>
 
 						<c:if test="${param.error != null }">
-							<span class="alert alert-danger">비밀번호가 일치하지않습니다. </span>
+							<span class="alert alert-danger">비밀번호가 일치하지 않습니다. </span>
 						</c:if>
 
 					</div>

@@ -304,7 +304,7 @@
 								})
 								
 								$("#delbtn${adminstatus.count }").click(function(){
-									$("form").attr("action", "${appRoot}/admin/admindelete");
+									$("form").attr("action", "${appRoot}/admin/adminlist");
 									alert("관리자계정을 삭제 완료됐습니다.")
 								})
 							});
