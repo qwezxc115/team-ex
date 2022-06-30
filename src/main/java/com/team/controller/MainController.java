@@ -16,14 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team.domain.CBoardVO;
-import com.team.domain.MarketVO;
 import com.team.domain.NoticeVO;
-import com.team.domain.SProductVO;
 import com.team.domain.UserVO;
 import com.team.service.CBoardService;
 import com.team.service.CsService;
-import com.team.service.MarketService;
-import com.team.service.SProductService;
 import com.team.service.UserService;
 
 import lombok.Setter;
@@ -33,50 +29,42 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/main")
 
-//질문 : view -> main 폴더? /home 루트 ,@RequestMapping 검색해보기 
 public class MainController {
-	
 
 	@Setter(onMethod_ = @Autowired)
 	private UserService service;
-	
+
 	@Setter(onMethod_ = @Autowired)
-    private CBoardService cboardservice;	
-	
-	@Setter(onMethod_ = @Autowired)
-	private MarketService marketservice;
-	
+	private CBoardService cboardservice;
+
 	@Setter(onMethod_ = @Autowired)
 	private CsService csservice;
-	
-	@Setter(onMethod_ = @Autowired)
-	private SProductService sproductservice;
-	
+
 	//메인 홈 
 	@RequestMapping("/home")
 	public void main(Model model) {
 		List<CBoardVO> cboardlist = cboardservice.getCbMainList();
-		List<MarketVO> marketlist = marketservice.getMarketMainList();
 		List<NoticeVO> noticelist = csservice.getNoticeMainList();
-		List<SProductVO> storelist = sproductservice.getsproductMainList(); 
-		
+
 		model.addAttribute("cboardList", cboardlist);
-		model.addAttribute("marketlist", marketlist);
 		model.addAttribute("noticelist", noticelist);
-		model.addAttribute("storelist", storelist);
-		
+
 		log.info("home method");
 
 	}
-	
-	
+
+	// 소개
+	@RequestMapping("/intro")
+	public void intro() {
+
+	}
+
 	//로그인 
 	@RequestMapping("/login")
 	public void login() {
 		log.info("login method");
 	}
-	
-	
+
 	//약관동의  
 	@RequestMapping("/tos")
 	public void tos() {
@@ -88,7 +76,7 @@ public class MainController {
 	public void signup() {
 		log.info(" singup method");
 	}
-	
+
 	//회원가입 버튼 클릭시 -> 회원가입정보저장 되는 코드 
 	@PostMapping("/signup")
 	public String signupPost(UserVO vo, RedirectAttributes rttr) {
@@ -102,7 +90,7 @@ public class MainController {
 			return "redirect:/main/signup?error";
 		}
 	}
-	
+
 	//아이디 중복 확인
 	@GetMapping("/dup")
 	@ResponseBody
@@ -115,48 +103,26 @@ public class MainController {
 		if (vo == null) {
 			return new ResponseEntity<>("success", HttpStatus.OK);
 		} else {
-			return new ResponseEntity<> ("exist", HttpStatus.OK);
+			return new ResponseEntity<>("exist", HttpStatus.OK);
 		}
 
 	}
-	
-	//기업용 회원가입B
-	@RequestMapping(value = "/signupB", method = RequestMethod.GET)
-	public void signupB() {
-		log.info(" singupBG method");
-	}
-	
-	//기업용 회원가입B
-	@RequestMapping(value = "/signupB", method = RequestMethod.POST)
-	public String signupB(UserVO vo, RedirectAttributes rttr) {
-		log.info(" singupBP method");
 
-		boolean ok = service.insertB(vo);
-
-		if (ok) {
-			return "redirect:/main/login";
-		} else {
-			return "redirect:/main/signupB?error";
-		}
-	}
-	
-    //아이디 찾기 페이지 이동
+	//아이디 찾기 페이지 이동
 	@RequestMapping(value = "/findId", method = RequestMethod.GET)
 	public String findIdView() {
 		return "main/findId";
 	}
 
-
-    //아이디 찾기 실행 log.info(principal.getName());
-	@RequestMapping(value="/findId", method=RequestMethod.POST)
+	//아이디 찾기 실행 log.info(principal.getName());
+	@RequestMapping(value = "/findId", method = RequestMethod.POST)
 	public String findIdAction(Principal principal, UserVO vo, Model model) {
 
 		UserVO user1 = service.findId(vo);
 
-
-		if(user1 == null) { 
+		if (user1 == null) {
 			model.addAttribute("check", 1);
-		} else { 
+		} else {
 			model.addAttribute("check", 0);
 			model.addAttribute("id", user1.getUserid());
 		}
@@ -179,14 +145,14 @@ public class MainController {
 		log.info(user2);
 
 		// 가입된 아이디가 없으면
-		if(user2 == null) {
+		if (user2 == null) {
 			model.addAttribute("check", 1);
 		}
 
-
 		// 가입된 이메일이 아니면 
-		else if(!vo.getUserEmail().equals(user2.getUserEmail())) {
-		  model.addAttribute("check", 2); }
+		else if (!vo.getUserEmail().equals(user2.getUserEmail())) {
+			model.addAttribute("check", 2);
+		}
 
 		// 임시 비밀번호 생성
 		else {
@@ -198,16 +164,14 @@ public class MainController {
 			}
 			vo.setUserpw(pw);
 
-
-		// 비밀번호 변경
+			// 비밀번호 변경
 			service.updatePw(vo);
 
 			vo.setUserpw(pw);
-		// 비밀번호 변경 메일 발송
-			service.sendEmail(vo, "findpassword");	
+			// 비밀번호 변경 메일 발송
+			service.sendEmail(vo, "findpassword");
 		}
-		return "main/findPw";	
+		return "main/findPw";
 	}
 
-	
 }

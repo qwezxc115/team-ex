@@ -21,13 +21,6 @@
 		(#{userid}, #{auth})
 	</insert>
 	
-	<!-- 기업 데이터 추가  -->
-	<insert id="insertB">
-		INSERT INTO GH_User
-		(userid, userpw, username, userPhone, userEmail, CompanyRegistrationNumber)
-		VALUES
-		(#{userid}, #{userpw}, #{userName}, #{userPhone}, #{userEmail}, #{CompanyRegistrationNumber})
-	</insert>
 	
 	<!--  정보 수정  -->
 	<update id="update">
@@ -49,14 +42,6 @@
       WHERE userid = #{userid}
    </update>
    
-   
-   
-   <!--  권한 지우기  -->
-	<!-- <delete id="removeAuth">
-		DELETE FROM  GH_auth
-		WHERE userid = #{userid}
-	</delete> -->
-	
 	<!-- 회원 탈퇴  -->
 	<delete id="remove">
 		DELETE FROM  GH_User
@@ -77,8 +62,6 @@
 			m.enabled enabled,
 			m.regdate regdate,
 			m.updateDate updateDate,
-			m.userpoint userpoint,
-			m.spendpoint spendpoint,
 			a.auth auth
 		  FROM 
 		    GH_User m LEFT JOIN GH_auth a ON m.userid = a.userid
@@ -86,9 +69,6 @@
 		   m.userid = #{userid} AND enabled = 1
 
      </select>
-     
- 
-
  
 	<!-- 아이디 찾기 -->
 	<select id="findId" resultMap="userMap">
@@ -111,20 +91,6 @@
 			UPDATE GH_User SET userpw = #{userpw} where userid = #{userid}
 	</update>
 
-	<!-- 포인트 업데이트 -->
-	<update id="updatePoint" >
-			UPDATE GH_User 
-			SET userpoint = userpoint - #{spendpoint}
-			WHERE userid = #{userid}
-	</update> 
-	 
-	<update id="updateSpendPoint" >
-			UPDATE GH_User 
-			SET spendpoint = #{spendpoint}
-			WHERE userid = #{userid}
-	</update> 	 
-	 
-	 
 	<!-- 책 662쪽 -->
 	  <resultMap type="com.team.domain.UserVO" id="userMap">
 	  	<id property="userid" column="userid" />
@@ -137,8 +103,6 @@
 	  	<result property="regdate" column="regdate" />
 	  	<result property="updateDate" column="updateDate" />
 	  	<result property="enabled" column="enabled" />
-	  	<result property="userpoint" column="userpoint" />
-	  	<result property="spendpoint" column="spendpoint" />
 	  	<collection property="authList" resultMap="authMap" />
 	  </resultMap>
 	  <resultMap type="com.team.domain.AuthVO" id="authMap">

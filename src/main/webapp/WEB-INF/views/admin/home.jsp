@@ -224,9 +224,6 @@
 		        <a class="nav-link" href="${appRoot }/admin/home">회원 목록 <span class="sr-only">(current)</span> </a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="${appRoot }/admin/otolist">문의내역 목록</a>
-		      </li>
-		      <li class="nav-item">
 		        <a class="nav-link" href="${appRoot }/admin/adminlist">관리자 목록</a>
 		      </li>
 		    </ul>
@@ -453,14 +450,6 @@
 		</div>
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
 	</div>
 	</sec:authorize>
 	<script>
@@ -473,10 +462,10 @@
 	<sec:authorize access="!hasRole('ROLE_ADMIN')">
 	<div class = "container">
 		<nb:navbar></nb:navbar>
-		<h1 style="text-align:center"> 이곳은 고집 관리자페이지 입니다.</h1>
+		<h1 style="text-align:center"> 이곳은 트리플 관리자페이지 입니다.</h1>
 		<h3 style="text-align:center"> 접근 권한이 없습니다.</h3>
 			<div style="text-align:center">
-				<button id=returnbtn type="button" style="width:400px; height:100px; margin:0 auto;"><span style="font-size:30px">고홈 돌아가기</span></button>
+				<button id=returnbtn type="button" style="width:400px; height:100px; margin:0 auto;"><span style="font-size:30px">트리플 돌아가기</span></button>
 			</div>
 	</div>
 	</sec:authorize>

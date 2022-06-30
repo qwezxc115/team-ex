@@ -139,7 +139,7 @@ $(document).ready(function(){
 		      <a class="nav-link active cl" id="v-pills-pwck-tab" data-toggle="pill" href="#v-pills-pwck" role="tab" aria-controls="v-pills-pwck" aria-selected="true">정보수정 </a>
 		     	<div class="nav-link cl">
 		     	
-		     		<button type="button" class="btn btncl" id="pw-modify-btn1">비밀번호수정 </button>
+		     		<button type="button" class="btn btncl" id="pw-modify-btn1">비밀번호 수정 </button>
 				
 					<button type="button" class="btn btncl" id="info-remove-btn1">회원 탈퇴</button>				
 		     	</div>
@@ -750,11 +750,7 @@ $(document).ready(function(){
 		
 		
 	</div>
-	
-	
-		
 
-	
 	
 	<c:if test="${not empty qqq}">
 	

@@ -47,7 +47,6 @@ $(document).ready(function() {
 		
 		<!-- 관리자만 글 쓸 수 있는 권한 부여 -->
 		<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<%-- <a href="${writeUrl }"><i class="fas fa-pen"></i> 글쓰기</a> --%>
 		<a href="${appRoot }/cs/noticeWriting"><i class="fas fa-pen"></i> 글쓰기</a>
 		</sec:authorize>
 		

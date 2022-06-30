@@ -25,10 +25,11 @@ security info
 
 <!-- 글꼴 수정 -->
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
 
  body{
-	font-family: 'Jua', sans-serif;
+	font-family: 'Dongle', sans-serif;
+	font-size: 1.7rem;
 
  }
 </style>

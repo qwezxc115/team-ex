@@ -5,89 +5,6 @@
   
 <mapper namespace="com.team.mapper.CsMapper">
 
-	<!-- 1:1 문의 -->
-	<select id="getotolist" resultType="com.team.domain.OtoVO">
-		
-    	SELECT 
-    		qono qono,
-    		otitle otitle,
-    		userid userid,
-    		odetail odetail,
-    		oregdate oregdate 
-    		   	
-     	FROM oto
-    	 
-   	 	WHERE userid = #{userid}
-
-     	ORDER BY qono DESC
-     
-    	 LIMIT #{cri.from}, #{cri.amount}
-    
-	</select>
-	
-	<insert id="otowriting" useGeneratedKeys="true" keyProperty="qono" keyColumn="qono">
-		INSERT into oto
-		(otitle, userid, odetail)
-		VALUES
-		(#{otitle}, #{userid}, #{odetail} )
-	</insert>
-	
-	<select id="otoreading" resultMap="otoMap">
-		SELECT
-			o.qono qono,
-   			o.otitle otitle,
-    		o.userid userid,
-    		o.odetail odetail,
-    		o.oregdate oregdate,
-			of.fileName fileName,
-			a.userid userid
-			
-		FROM 
-			oto o
-		LEFT JOIN
-			otofile of
-		ON
-			o.qono = of.qono
-		JOIN 
-			GH_User a 
-		ON 
-			o.userid = a.userid 
-		WHERE 
-			o.qono = #{qono};
-	</select>
-	
-	<!-- resultType : 결과를 받을 타입 지정 -->
-	<!-- 페이징 : 게시글 총 갯수 -->
-	<select id="getTotalCountO" resultType="int">
-		SELECT COUNT(*) FROM oto o
-		<!-- <include refid="criteria"></include> -->
-	</select>
-	
-	
-	<!-- 다중 파일 otofile -->
-	  <resultMap type="com.team.domain.OtoVO" id="otoMap">
-	  	<id property="qono" column="qono" />
-	  	<result property="otitle" column="otitle" />
-	  	<result property="userid" column="userid" />
-	  	<result property="odetail" column="odetail" />
-	    <result property="oregdate" column="oregdate" />
-	  	<collection property="fileName" resultMap="ofileNameMap"></collection>
-	  </resultMap>
-	  
-	  <resultMap type="string" id="ofileNameMap">
-	  	<result column="fileName" />
-	  </resultMap>
-	
-	<delete id="otodelete">
-		DELETE FROM oto
-		WHERE qono= #{qono};
-	</delete>
-	
-	<select id="otoanswer" resultType="com.team.domain.OtoAnswerVO">
-		SELECT * FROM otoanswer WHERE qono = #{qono};
-	</select>
-	
-	
 	
 	<!-- 공지사항 -->
 	
@@ -173,7 +90,6 @@
 		ORDER BY nregdate DESC
 		LIMIT 5;
 	 </select>
-
 
 
 	<!-- 다중 파일 notice_file -->

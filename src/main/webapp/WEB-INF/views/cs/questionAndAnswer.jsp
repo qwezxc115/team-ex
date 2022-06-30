@@ -72,7 +72,6 @@
 	<div class="container">
 
 		<nb:navbar />
-		<nb:scroll />
 
 		<div class="top_bg text-center ">
 

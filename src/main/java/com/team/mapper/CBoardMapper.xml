@@ -114,11 +114,6 @@
 	 <delete id="cbdelete">
 	  		DELETE FROM C_board WHERE bno = #{bno}
 	 </delete>
-	  
-<!-- 	  <delete id="cbremoveByUserid">
-	 	 DELETE FROM C_board
- 		 WHERE writer = #{userid}
-	  </delete> -->
 	 
 	 
 	 <select id="listCBoardBno" resultType="long">

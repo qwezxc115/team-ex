@@ -11,23 +11,11 @@
 		VALUES (#{bno}, #{fileName})
 		
 	</insert>
-	
-	
+
 	
 	<delete id="cbfdeleteBybno">
 		DELETE FROM C_board_file WHERE bno = #{bno}
 	</delete>
-
-
-<!-- 	<delete id="cbfremoveByUserid">
-		DELETE FROM C_board_file
-		WHERE bno IN(
-			SELECT bno FROM C_board
-			WHERE writer = #{userid}
-		)
-	</delete>
-	 -->
-
 
 	  
 </mapper>

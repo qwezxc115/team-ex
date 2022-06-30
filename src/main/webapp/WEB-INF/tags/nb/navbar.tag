@@ -10,7 +10,7 @@
 			e.preventDefault();
 			$("#navbar-logout-form").submit();
 		});
-		
+
 		$("#booking").click(function() {
 			alert("Comming Soon");
 			$("#input-title").focus();
@@ -20,17 +20,13 @@
 	})
 </script>
 
+<style>
+.dropdown-menu {
+	font-size: 1.3rem;
+}
+</style>
 
-
-
-<!--  검색  -->
-<!-- 회원가입 페이지 ! -->
-<!-- 기업 회원가입 페이지 ! -->
-<!-- 회원정보 페이지 ! -->
-
-
-
-
+<!-- 로그인  -->
 <div class="d-flex justify-content-end">
 	<nav class="navbar navbar-expand-sm navbar-light">
 		<div class="container-fluid">
@@ -80,17 +76,6 @@
 						</li>
 					</sec:authorize>
 
-
-					<sec:authorize access="isAuthenticated()">
-						<li class="nav-item">
-							<%-- 		         	<sec:authentication property="principal.user" var="user" />
- --%>
-							<a class="nav-link" href="${appRoot }/message/mgreceive">쪽지함
-							</a>
-						</li>
-					</sec:authorize>
-
-
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li class="nav-item">
 							<a class="nav-link" href="${appRoot }/admin/home" tabindex="-1"
@@ -115,29 +100,15 @@
 				src="${appRoot }/resources/img/triple-logo.png">
 		</a>
 	</div>
-
-	<div class="form-group col-md-6 text-center m-1">
-		<form class="form-inline text-center">
-			<div class="input-group">
-				<input class="form-control mr-sm-2" type="search"
-					placeholder="Search" aria-label="Search">
-				<div class="input-group-append">
-					<button class="btn btn-outline-secondary" type="button"
-						id="toggle-password-btn">
-						<i class="fas fa-search"></i>
-					</button>
-				</div>
-			</div>
-		</form>
-	</div>
 </div>
 
+<!-- 메뉴바 -->
 <div class="navbar row justify-content-center p-0">
 	<nav class="navbar navbar-expand-sm navbar-light">
 		<ul class="navbar-nav mr-auto text-center">
 
 			<li class="nav-item dropdown">
-				<a class="nav-link" href="${appRoot }/store/home" role="button"
+				<a class="nav-link" href="${appRoot }/main/intro" role="button"
 					aria-expanded="false"> 소개 </a>
 			</li>
 
@@ -158,7 +129,6 @@
 				</ul>
 			</li>
 
-			<!-- 업체 서브 빠이빠이  -->
 			<li class="nav-item dropdown">
 				<a id="booking" class="nav-link" href="#" role="button"
 					aria-expanded="false"> 숙소 </a>
@@ -175,9 +145,6 @@
 					</li>
 					<li>
 						<a class="dropdown-item" href="${appRoot }/cs/questionAndAnswer">Q&A</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="${appRoot }/cs/oneToOne">1:1문의</a>
 					</li>
 					<li>
 						<hr class="dropdown-divider">

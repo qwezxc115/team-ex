@@ -18,11 +18,9 @@
 	<hr>
 	<div class="d-flex justify-content-between p-2">
 		<div class="text-left">
-	         <a class="nav-link p-0" href="${appRoot }/cs/oneToOne"  role="button" >고객센터</a>
 	         <p>상호명 : (주)어디로든문 | 대표 : 트리플 | 사업자번호:000-12-34567</p>
 	         <p>주소 : 서울특별시 강남구 테헤란로777 | 이메일 : info@triple.co.kr | 전화번호 : 010-1234-5678</p>
          </div>
-		
 		
 		<div class="align-items-center text-center">
 			<a class="navbar-brand" href="${appRoot}/main/home"> 

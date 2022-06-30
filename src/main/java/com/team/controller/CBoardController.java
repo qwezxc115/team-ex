@@ -61,7 +61,6 @@ public class CBoardController {
 	//자유게시판 글쓰기 
 	@GetMapping("/cbwriting")
 	@PreAuthorize("isAuthenticated()")
-	//@PreAuthorize("isAuthenticated()")
 	public void register()  {
 		log.info("boardwriting method");
 	}
@@ -71,9 +70,10 @@ public class CBoardController {
 	public String register(CBoardVO cboard, 
 			 MultipartFile file,RedirectAttributes rttr) {
 		
-		//파일이름 가져와서 저장 
-		cboard.setFileName(file.getOriginalFilename());
-		
+		//파일이름 가져와서 저장
+		if(file.getSize() > 0) {
+			cboard.setFileName(file.getOriginalFilename());			
+		}
 		
 		service.cbfregister(cboard,file);
 		

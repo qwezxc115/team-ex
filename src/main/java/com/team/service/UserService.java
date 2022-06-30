@@ -6,8 +6,6 @@ public interface UserService {
 
 	//데이터 추가 
 	boolean insert(UserVO vo);
-	boolean insertB(UserVO vo);
-	
 	
 	//데이터 가져오기 
 	UserVO read(String name);
@@ -33,7 +31,4 @@ public interface UserService {
 	//이메일발송
 	public void sendEmail(UserVO vo, String div) throws Exception;
 
-	public void updatePoint(UserVO vo);
-	
-	public void updateSpendPoint(UserVO vo);
 }

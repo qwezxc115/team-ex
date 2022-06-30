@@ -6,9 +6,6 @@ import com.team.domain.CBCriteria;
 import com.team.domain.CBoardVO;
 
 public interface CBoardMapper {
-
-	
-	
 	
 	//게시물 저장 
 	public int cbinsertSelectKey(CBoardVO cboard);
