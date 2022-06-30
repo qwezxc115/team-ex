@@ -32,6 +32,14 @@
 #search {
 	float: right;
 }
+
+.btn {
+	font-size: 1.3rem;
+}
+
+.form-select1 {
+	font-size: 1.5rem;
+}
 </style>
 
 <script type="text/javascript">

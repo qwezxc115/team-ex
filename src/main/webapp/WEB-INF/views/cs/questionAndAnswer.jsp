@@ -15,6 +15,7 @@
 
 <link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
 <title>Q&#38;A</title>
+
 <style type="text/css">
 .top_bg {
 	width: 100%;
@@ -23,7 +24,7 @@
 
 .list-group .list-group-item.active, .list-group .show>.list-group-item
 	{
-	background-color: #6d0d27;
+	background: linear-gradient(to right, #B8E9FF, #18A8F1);
 }
 
 .list-group {
@@ -40,10 +41,12 @@
 
 .Q_title {
 	cursor: pointer;
+	font-size: 1.5rem;
 }
 
 .answer {
 	display: none;
+	font-size: 1.5rem;
 }
 </style>
 
@@ -86,11 +89,12 @@
 				<a class="col list-group-item list-group-item-action active"
 					id="list-home-list" data-toggle="list" href="#list-home" role="tab"
 					aria-controls="home">회원정보 </a>
+					
 				<a class="col list-group-item list-group-item-action"
 					id="list-profile-list" data-toggle="list" href="#list-profile"
 					role="tab" aria-controls="profile">숙소관련</a>
-
 			</div>
+			
 			<div class="tab-content" id="nav-tabContent">
 				<div class="tab-pane fade show active" id="list-home"
 					role="tabpanel" aria-labelledby="list-home-list">

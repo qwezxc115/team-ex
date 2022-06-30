@@ -24,6 +24,12 @@
 .dropdown-menu {
 	font-size: 1.3rem;
 }
+
+#hello {
+	background: linear-gradient(to right, #B8E9FF, #18A8F1);
+	color: transparent;
+	-webkit-background-clip: text;
+}
 </style>
 
 <!-- 로그인  -->
@@ -62,7 +68,7 @@
 
 						<li class="nav-item p-2">
 							<sec:authentication property="principal.user.userName" />
-							<span style="color: #6d0d27;">님 반갑습니다 !</span>
+							<span id="hello">님 반갑습니다 !</span>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#" id="navbar-logout-link">로그아웃</a>

@@ -30,6 +30,12 @@
 	.btn-outline-secondary{
 		background-color: #ececee;
 	}
+	
+	#admining {
+		background: linear-gradient(to right, #B8E9FF, #18A8F1);
+		color: transparent;
+		-webkit-background-clip: text;
+	}
 </style>
 	
 <script type="text/javascript">
@@ -212,7 +218,7 @@
 		<!-- 상단 메뉴바 -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  <a class="navbar-brand" href="${appRoot}/main/home">
-			<img alt="triple-logo" width="100" src="${appRoot }/resources/img/triple-logo.png">
+			<img alt="triple-logo" width="150" src="${appRoot }/resources/img/triple-logo.png">
 		  </a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
@@ -229,7 +235,7 @@
 		    </ul>
 		    <ul  class="navbar-nav">
 				<li class="nav-item p-2">
-					<span style="color:#6d0d27;"><b>현재 관리자로 로그인 중입니다</b></span>
+					<span id="admining"><b>현재 관리자로 로그인 중입니다</b></span>
 		      	</li>
 				<li class="nav-item">
        				<a class="nav-link" href="#" id="navbar-logout-link">로그아웃</a>
