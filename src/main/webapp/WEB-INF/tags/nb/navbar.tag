@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+	
 <script>
 	$(document).ready(function() {
 		//로그아웃 동작 
@@ -16,6 +17,17 @@
 			$("#input-title").focus();
 			return false;
 		});
+		
+		// nav scroll event
+		var navOffset = $( '.mainNav' ).offset(); // 위치 파악
+        $( window ).scroll( function() { // 스크롤 발생
+          if ( $( document ).scrollTop() > navOffset.top ) { // 스크롤 위치가 수직 위치보다 아래면
+            $( '.mainNav' ).addClass( 'navFixed' ); 
+          }
+          else {
+            $( '.mainNav' ).removeClass( 'navFixed' ); 
+          }
+        });
 
 	})
 </script>
@@ -30,20 +42,90 @@
 	color: transparent;
 	-webkit-background-clip: text;
 }
+
+.navFixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+}
 </style>
 
-<!-- 로그인  -->
-<div class="d-flex justify-content-end">
+<div class="mainNav">
 	<nav class="navbar navbar-expand-sm navbar-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
+
+			<!-- 상단 로고 -->
+			<div class="justify-content-start">
+				<a class="navbar-brand" href="${appRoot}/main/home">
+					<img alt="triple-logo" width="150"
+						src="${appRoot }/resources/img/triple-logo.png">
+				</a>
+			</div>
+
+			<!-- 센터 메뉴 -->
+			<div class="justify-content-between">
+				<ul class="navbar-nav mr-auto text-center">
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="${appRoot }/main/intro" role="button"
+							aria-expanded="false"> 소개 </a>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#"
+							id="navbarScrollingDropdown" role="button" data-toggle="dropdown"
+							aria-expanded="false"> 커뮤니티 </a>
+						<ul class="dropdown-menu"
+							aria-labelledby="navbarScrollingDropdown">
+
+							<li>
+								<a class="dropdown-item" href="${appRoot}/community/cbhome">자유게시판
+								</a>
+							</li>
+
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+						</ul>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a id="booking" class="nav-link" href="#" role="button"
+							aria-expanded="false"> 숙소 </a>
+
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown"
+							href="#" role="button" aria-expanded="false"> 고객센터 </a>
+						<ul class="dropdown-menu"
+							aria-labelledby="navbarScrollingDropdown">
+
+							<li>
+								<a class="dropdown-item" href="${appRoot }/cs/notice">공지사항 </a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="${appRoot }/cs/questionAndAnswer">Q&A</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+
+						</ul>
+
+					</li>
+
+				</ul>
+			</div>
+
+			<!-- 오른쪽 로그인 -->
+			<div class="justify-content-end" id="navbarNav">
 				<ul class="navbar-nav">
 					<sec:authorize access="!isAuthenticated()">
 						<li class="nav-item">
@@ -60,8 +142,6 @@
 					<sec:authorize access="!isAuthenticated()">
 
 					</sec:authorize>
-
-
 
 					<!-- 로그아웃, 마이페이지 로그인한 사용자만 보이게  -->
 					<sec:authorize access="isAuthenticated()">
@@ -98,69 +178,4 @@
 <form action="${appRoot }/logout" method="post" id="navbar-logout-form">
 </form>
 
-
-<div class="navbar row justify-content-center p-0">
-	<div class="col-md-3 text-center p-0">
-		<a class="navbar-brand" href="${appRoot}/main/home">
-			<img alt="triple-logo" width="250"
-				src="${appRoot }/resources/img/triple-logo.png">
-		</a>
-	</div>
-</div>
-
-<!-- 메뉴바 -->
-<div class="navbar row justify-content-center p-0">
-	<nav class="navbar navbar-expand-sm navbar-light">
-		<ul class="navbar-nav mr-auto text-center">
-
-			<li class="nav-item dropdown">
-				<a class="nav-link" href="${appRoot }/main/intro" role="button"
-					aria-expanded="false"> 소개 </a>
-			</li>
-
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#"
-					id="navbarScrollingDropdown" role="button" data-toggle="dropdown"
-					aria-expanded="false"> 커뮤니티 </a>
-				<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-
-					<li>
-						<a class="dropdown-item" href="${appRoot}/community/cbhome">자유게시판
-						</a>
-					</li>
-
-					<li>
-						<hr class="dropdown-divider">
-					</li>
-				</ul>
-			</li>
-
-			<li class="nav-item dropdown">
-				<a id="booking" class="nav-link" href="#" role="button"
-					aria-expanded="false"> 숙소 </a>
-
-			</li>
-
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-					role="button" aria-expanded="false"> 고객센터 </a>
-				<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-
-					<li>
-						<a class="dropdown-item" href="${appRoot }/cs/notice">공지사항 </a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="${appRoot }/cs/questionAndAnswer">Q&A</a>
-					</li>
-					<li>
-						<hr class="dropdown-divider">
-					</li>
-
-				</ul>
-
-			</li>
-
-		</ul>
-	</nav>
-</div>
 <hr class="m-1">

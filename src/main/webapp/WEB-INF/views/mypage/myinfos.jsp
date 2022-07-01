@@ -164,7 +164,7 @@ html, body {
 
 				<div class="tab-content" id="v-pills-tabContent">
 
-					<!--  비밀번화가 맞으면 보여줘야될 정보 컨텐츠 -->
+					<!--  비밀번호가 맞으면 보여줘야될 정보 컨텐츠 -->
 					<div class="jumbotron tab-pane fade show active " id="v-pills-pwck"
 						role="tabpanel" aria-labelledby="v-pills-pwck-tab">
 						<div class="cth">

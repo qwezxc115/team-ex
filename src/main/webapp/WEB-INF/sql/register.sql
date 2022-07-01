@@ -18,11 +18,6 @@ CREATE table GH_User(
     updateDate TIMESTAMP DEFAULT NOW(),
     enabled TINYINT(1) DEFAULT 1
 );
--- 0819 추가
-ALTER TABLE GH_User ADD userpoint INT DEFAULT 1000000;
-ALTER TABLE GH_User ADD spendpoint INT ;
-
-
 
 -- 권한 테이블 만들기 
 CREATE TABLE GH_auth(
