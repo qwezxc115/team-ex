@@ -3,10 +3,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-	
+
 <script>
 	$(document).ready(function() {
-		//로그아웃 동작 
 		$("#navbar-logout-link").click(function(e) {
 			e.preventDefault();
 			$("#navbar-logout-form").submit();
@@ -17,17 +16,16 @@
 			$("#input-title").focus();
 			return false;
 		});
-		
+
 		// nav scroll event
-		var navOffset = $( '.mainNav' ).offset(); // 위치 파악
-        $( window ).scroll( function() { // 스크롤 발생
-          if ( $( document ).scrollTop() > navOffset.top ) { // 스크롤 위치가 수직 위치보다 아래면
-            $( '.mainNav' ).addClass( 'navFixed' ); 
-          }
-          else {
-            $( '.mainNav' ).removeClass( 'navFixed' ); 
-          }
-        });
+		var navOffset = $('.mainNav').offset(); // 위치 파악
+		$(window).scroll(function() { // 스크롤 발생
+			if ($(document).scrollTop() > navOffset.top) { // 스크롤 위치가 수직 위치보다 아래면
+				$('.mainNav').addClass('navScrolled');
+			} else {
+				$('.mainNav').removeClass('navScrolled');
+			}
+		});
 
 	})
 </script>
@@ -43,12 +41,22 @@
 	-webkit-background-clip: text;
 }
 
-.navFixed {
+.navScrolled {
+	background-color: white;
 	position: fixed;
+	z-index: 1;
 	top: 0;
 	left: 0;
 	right: 0;
+	-webkit-transition: all .3s ease 0s;
+	transition: all .3s ease 0s;
 }
+
+.mainNav {
+	-webkit-transition: all .3s ease 0s;
+	transition: all .3s ease 0s;
+}
+
 </style>
 
 <div class="mainNav">
