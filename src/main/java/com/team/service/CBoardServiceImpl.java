@@ -25,7 +25,6 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 public class CBoardServiceImpl implements CBoardService {
 
 	private String bucketName;
-	private String profileName;
 	private S3Client s3;
 
 	@Setter(onMethod_ = @Autowired)
@@ -38,7 +37,6 @@ public class CBoardServiceImpl implements CBoardService {
 
 	public CBoardServiceImpl() {
 		this.bucketName = "bucket0207-0308";
-		this.profileName = "gohome1";
 
 		/*Path contentLocation = new File(System.getProperty("user.home") + "/.aws/credentials").toPath();
 		ProfileFile pf = ProfileFile.builder().content(contentLocation).type(ProfileFile.Type.CREDENTIALS).build();
@@ -120,7 +118,7 @@ public class CBoardServiceImpl implements CBoardService {
 		if (file != null & file.getSize() > 0) {
 			// s3는 삭제 후 재업로드
 			CBoardVO oldBoard = mapper.readcb(cboard.getBno());
-			removecbFile(oldBoard);
+//			removecbFile(oldBoard);
 			upload(cboard, file);
 
 			filemapper.cbfdeleteBybno(cboard.getBno());
@@ -144,21 +142,21 @@ public class CBoardServiceImpl implements CBoardService {
 
 		//s3 저장한 파일 삭제
 		CBoardVO vo = mapper.readcb(bno);
-		removecbFile(vo);
+		/*removecbFile(vo);*/
 
 		int cnt = mapper.cbdelete(bno);
 
 		return cnt == 1;
 	}
 
-	private void removecbFile(CBoardVO vo) {
+	/*private void removecbFile(CBoardVO vo) {
 		//		String bucketName = "";
 		String key = "cboard/" + vo.getBno() + "/" + vo.getFileName();
-
+	
 		DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder().bucket(bucketName).key(key).build();
-
+	
 		s3.deleteObject(deleteObjectRequest);
-	}
+	}*/
 
 	@Override
 	public List<CBoardVO> getCbMainList() {
