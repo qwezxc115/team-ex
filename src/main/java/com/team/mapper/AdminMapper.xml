@@ -9,12 +9,12 @@
 	
 	<!-- 일반회원 리스트조회 -->
 	<select id="getUserlist" resultType="com.team.domain.UserVO" >
-		  SELECT * FROM GH_User u JOIN GH_auth a ON(u.userid = a.userid) where a.auth = "ROLE_USER" order by regdate desc ;
+		  SELECT * FROM TP_User u JOIN TP_auth a ON(u.userid = a.userid) where a.auth = "ROLE_USER" order by regdate desc ;
     </select>
 	
 	<!-- 일반회원 회원추가 -->
 	<insert id="getUserinsert">
-		INSERT INTO GH_User
+		INSERT INTO TP_User
 		(userid, userpw, username, userPhone, userEmail, useradd)
 		VALUES
 		(#{userid}, #{userpw}, #{userName}, #{userPhone}, #{userEmail}, #{useradd})
@@ -22,7 +22,7 @@
 
 	<!-- 일반회원 권한추가 -->
 	<insert id="getUserinsertAuth">
-		INSERT INTO GH_auth
+		INSERT INTO TP_auth
 		(userid, auth)
 		VALUES
 		(#{userid}, #{auth})
@@ -30,7 +30,7 @@
 	
 	<!--  일반회원 정보 수정  -->
 	<update id="Userupdate">
-	  UPDATE GH_User
+	  UPDATE TP_User
 	  SET 
 	      userName = #{userName},
 	      userPhone = #{userPhone},
@@ -43,7 +43,7 @@
 	
 	<!-- 일반회원 회원탈퇴 -->
 	<delete id="Userdelete">
-		DELETE FROM GH_User
+		DELETE FROM TP_User
 		WHERE userid = #{userid}
 	</delete>
 	
@@ -52,12 +52,12 @@
 						
 	<!-- 관리자 리스트조회 -->
 	<select id="getAdminlist" resultType="com.team.domain.UserVO" >
-		  SELECT * FROM GH_User u JOIN GH_auth a ON(u.userid = a.userid) where a.auth = "ROLE_ADMIN" order by regdate desc ;
+		  SELECT * FROM TP_User u JOIN TP_auth a ON(u.userid = a.userid) where a.auth = "ROLE_ADMIN" order by regdate desc ;
     </select>	
     
     <!-- 관리자회원 회원추가 -->
 	<insert id="getAdmininsert">
-		INSERT INTO GH_User
+		INSERT INTO TP_User
 		(userid, userpw, username, userPhone, userEmail, useradd)
 		VALUES
 		(#{userid}, #{userpw}, #{userName}, #{userPhone}, #{userEmail}, #{useradd})
@@ -65,7 +65,7 @@
 
 	<!-- 관리자회원 권한추가 -->
 	<insert id="getAdmininsertAuth">
-		INSERT INTO GH_auth
+		INSERT INTO TP_auth
 		(userid, auth)
 		VALUES
 		(#{userid}, #{auth})
@@ -73,7 +73,7 @@
 	
 	<!--  관리자회원 정보 수정  -->
 	<update id="Adminupdate">
-	  UPDATE GH_User
+	  UPDATE TP_User
 	  SET 
 	      userName = #{userName},
 	      userPhone = #{userPhone},
@@ -86,13 +86,9 @@
 	
 	<!-- 관리자회원 회원탈퇴 -->
 	<delete id="Admindelete">
-		DELETE FROM GH_User
+		DELETE FROM TP_User
 		WHERE userid = #{userid}
 	</delete>		
-	
-	
-
-	
 	
 	
 </mapper>

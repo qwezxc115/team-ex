@@ -8,14 +8,14 @@
 
 	<!-- 개인회원  데이터 추가  -->
 	<insert id="insert">
-		INSERT INTO GH_User
+		INSERT INTO TP_User
 		(userid, userpw, username, userPhone, userEmail)
 		VALUES
 		(#{userid}, #{userpw}, #{userName}, #{userPhone}, #{userEmail})
 	</insert>
 
 	<insert id="insertAuth">
-		INSERT INTO GH_auth
+		INSERT INTO TP_auth
 		(userid, auth)
 		VALUES
 		(#{userid}, #{auth})
@@ -24,7 +24,7 @@
 	
 	<!--  정보 수정  -->
 	<update id="update">
-	  UPDATE GH_User
+	  UPDATE TP_User
 	  SET 
 	      userName = #{userName},
 	      userPhone = #{userPhone},
@@ -37,14 +37,14 @@
    
    <!-- 비밀번호 수정  -->
    <update id="modifyPassword">
-      UPDATE GH_User
+      UPDATE TP_User
       SET userpw = #{userpw}
       WHERE userid = #{userid}
    </update>
    
 	<!-- 회원 탈퇴  -->
 	<delete id="remove">
-		DELETE FROM  GH_User
+		DELETE FROM  TP_User
 		WHERE userid = #{userid}
 	</delete>
 	
@@ -56,7 +56,6 @@
 			m.userpw userpw,
 			m.username username,
 			m.userPhone userPhone,
-			m.CompanyRegistrationNumber CompanyRegistrationNumber,
 			m.userEmail userEmail,
 			m.useradd useradd,
 			m.enabled enabled,
@@ -64,7 +63,7 @@
 			m.updateDate updateDate,
 			a.auth auth
 		  FROM 
-		    GH_User m LEFT JOIN GH_auth a ON m.userid = a.userid
+		    TP_User m LEFT JOIN TP_auth a ON m.userid = a.userid
 		  WHERE
 		   m.userid = #{userid} AND enabled = 1
 
@@ -74,7 +73,7 @@
 	<select id="findId" resultMap="userMap">
 			SELECT 
 			 *
-			FROM GH_User
+			FROM TP_User
 			WHERE username = #{userName} AND userphone = #{userPhone}
 	</select>
 	
@@ -82,13 +81,13 @@
 	<select id="findPw" resultMap="userMap">
 			SELECT 
 			 *
-			FROM GH_User
+			FROM TP_User
 			WHERE userid = #{userid}
 	</select>
 	
 	<!-- 비밀번호 변경 -->
 	<update id="updatePw" >
-			UPDATE GH_User SET userpw = #{userpw} where userid = #{userid}
+			UPDATE TP_User SET userpw = #{userpw} where userid = #{userid}
 	</update>
 
 	<!-- 책 662쪽 -->

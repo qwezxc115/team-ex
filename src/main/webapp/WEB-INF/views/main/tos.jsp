@@ -10,7 +10,7 @@
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
 <link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
-	<title>회원가입 약관동의 </title>
+	<title>회원가입 약관동의</title>
 	
 	
 	<style type="text/css">

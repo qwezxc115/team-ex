@@ -55,7 +55,7 @@
 		ON
 			n.nno = nf.nno
 		JOIN 
-			GH_User a 
+			TP_User a 
 		ON 
 			n.userid = a.userid 	
 		WHERE

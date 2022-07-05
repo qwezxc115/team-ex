@@ -25,7 +25,7 @@
     
 </style>
 <link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
-<title>게시글 보기 </title>
+<title>게시글 보기</title>
 </head>
 <body>
 

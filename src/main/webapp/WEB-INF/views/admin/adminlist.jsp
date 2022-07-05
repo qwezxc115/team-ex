@@ -14,7 +14,7 @@
 
 
 <link rel="shortcut icon" type="image/x-icon" href="${appRoot }/resources/img/triple.png">
-<title>트리플 관리자페이지</title>
+<title>관리자 페이지</title>
 </head>
 <style>
 

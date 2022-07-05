@@ -55,7 +55,7 @@
 		  	 f.fileName fileName,
 		  	 m.username writerName
 		  	FROM C_board b LEFT JOIN C_board_file f ON b.bno = f.bno
-		  	                      JOIN  GH_User m ON b.writer = m.userid
+		  	                      JOIN  TP_User m ON b.writer = m.userid
 		  	WHERE b.bno = #{bno}
 	  </select>
 		  
@@ -80,7 +80,7 @@
 	    	m.username writerName,
 	    	COUNT(r.rno) replyCnt
 	     FROM C_board b LEFT JOIN cb_reply r ON b.bno = r.bno
-	     				INNER JOIN GH_User m ON b.writer = m.userid
+	     				INNER JOIN TP_User m ON b.writer = m.userid
 	     <include refid="criteria"></include>
 	
 	
@@ -92,7 +92,7 @@
 	  
 	  
 	 <select id="getcbTotalCount" resultType="int">
- 		 SELECT COUNT(*) FROM C_board b INNER JOIN GH_User m ON b.writer = m.userid
+ 		 SELECT COUNT(*) FROM C_board b INNER JOIN TP_User m ON b.writer = m.userid
  		  <include refid="criteria"></include>
  	 </select>
 	  
