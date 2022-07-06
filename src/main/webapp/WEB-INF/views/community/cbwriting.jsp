@@ -24,6 +24,10 @@
    	max-width: 90%;
     }
     
+    .form-control {
+    	font-size: 1.4rem;
+    }
+    
 </style>
 <script type="text/javascript">
 

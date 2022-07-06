@@ -40,6 +40,10 @@
 .form-select1 {
 	font-size: 1.5rem;
 }
+
+.form-control {
+	font-size: 1.4rem;
+}
 </style>
 
 <script type="text/javascript">
@@ -195,16 +199,16 @@
 					<select name="type" class="form-control mr-sm-2">
 						<option value="T" ${cri.type == "T" ? 'selected' : '' }>제목
 						</option>
-						<option value="C" ${cri.type == "C" ? 'selected' : '' }>내용
+						<option value="C" ${cri.type == "C" ? 'selected' : '' }>본문
 						</option>
 						<option value="W" ${cri.type == "W" ? 'selected' : '' }>작성자
 						</option>
 						<option value="TC" ${cri.type == "TC" ? 'selected' : '' }>
-							제목 or 내용</option>
+							제목 + 본문</option>
 						<option value="TW" ${cri.type == "TW" ? 'selected' : '' }>제목
-							or 작성자</option>
+							+ 작성자</option>
 						<option value="TWC" ${cri.type == "TWC" ? 'selected' : '' }>제목
-							or 내용 or 작성자</option>
+							+ 본문 + 작성자</option>
 					</select>
 					<input name="keyword" value="${cri.keyword }"
 						class="form-control mr-sm-2" type="search" placeholder="Search"

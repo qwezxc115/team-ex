@@ -27,20 +27,32 @@
 	
 		.btn-outline-secondary{
 			background-color: #ececee;
+			font-size: 1.2rem;
 		}
 		.btn-outline-secondary:hover{
-			background-color: #6d0d27;
+			background: linear-gradient(to right, #B8E9FF, #18A8F1 );
 		}
 		.signupbtn{
 			background: linear-gradient(to right, #B8E9FF, #18A8F1 );
 			border: none;
 			color:#fff;
+			font-size: 1.2rem;
 		}
 		.signupbtn:hover{
 			color:#fff;
 		}
 		.bkbtn{
 			background-color:#daccc6;
+			font-size: 1.2rem;
+		}
+		
+		.form-control{
+			font-size: 1.3rem;
+		}
+		
+		#eye {
+			height: 46px;
+			width: 58px;
 		}
 	</style>
 

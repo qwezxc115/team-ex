@@ -28,8 +28,8 @@
 .board_bg {
 	width: 100%;
 	height: 100px;
-	background: no-repeat url("${appRoot }/resources/img/main_board.png");
-	background-size: contain;
+	background: no-repeat url("${appRoot }/resources/img/main_board.jpg");
+	background-position: center;
 }
 
 .card_s {

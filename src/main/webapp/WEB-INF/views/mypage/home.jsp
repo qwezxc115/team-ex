@@ -59,6 +59,15 @@ html, body {
 	background-color: transparent;
 	color: #000000;
 }
+
+#pwbtn:hover{
+	background: linear-gradient(to right, #B8E9FF, #18A8F1);
+}
+
+.btn-danger {
+	background: linear-gradient(to right, #B8E9FF, #18A8F1);
+	border: none;
+}
 </style>
 
 <script type="text/javascript">
@@ -232,7 +241,7 @@ html, body {
 		</div>
 	</div>
 
-	<!--비밀번호변경    (모달 !)  -->
+	<!--비밀번호변경 (모달 !)  -->
 	<div class="modal fade" id="password-modify-modal">
 		<div class="modal-dialog">
 			<div class="modal-content">

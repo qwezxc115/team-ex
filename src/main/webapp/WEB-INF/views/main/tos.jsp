@@ -26,10 +26,11 @@
 		.checkBox>ul>li{ float: left;}
 		.lsfl{ width:100%;}
 		.libl{ width:100%;}
-		.spchk{ color:#6d0d27;}
+		.spchk{ color:#FC2929;}
 		.checkBox>ul>li:first-child{ width:100%;padding:10px;font-weight: 600;color: #888;}
 		.checkBox>ul>li:nth-child(2){ position: absolute;top: 50%;right: 30px;margin-top: -12px;}
 		.checkBox .form-control{ padding:10px;background-color: #f7f7f7;color: #888; border: none;}
+		.form-control{ font-size: 1.5rem; }
 		.footBtwrap{ margin-top: 15px;}
 		.footBtwrap>li{ float: left;width: 50%;height: 60px;}
 		.footBtwrap>li>button{ display: block; width: 100%;height: 100%; font-size: 20px;text-align: center;line-height: 60px;}
@@ -48,7 +49,7 @@
 		
 		        if($("#checkall").prop("checked")){
 		            $("input[class=chk]").prop("checked",true);
-					$(".fpmgBt2").css({"background-color": "#daccc6", "color": "#000"}).prop("disabled",false);
+					$(".fpmgBt2").css({"background-color": "#6CDEEB", "color": "#000"}).prop("disabled",false);
 		        } else{
 		            $("input[class=chk]").prop("checked",false);
 					$(".fpmgBt2").css({"background-color": "#fff", "color": "#888"}).prop("disabled",true);
@@ -163,9 +164,9 @@
                             <input type="checkbox" class="chk">
                         </li>
                     </ul>
-                    <p class="lp">
-                    트리플에서 제공하는 이벤트/혜택 등 다양한 정보를 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 고집  가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.
-                    </p>
+                    <textarea class="form-control" rows="3" readonly="readonly" >트리플에서 제공하는 이벤트/혜택 등 다양한 정보를 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 고집  가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 
+개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.
+                   </textarea>
                 </li>
             </ul>
             </div>
