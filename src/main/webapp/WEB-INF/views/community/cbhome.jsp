@@ -17,7 +17,7 @@
 
 <link rel="shortcut icon" type="image/x-icon"
 	href="${appRoot }/resources/img/triple.png">
-<title>자유게시판 글 목록</title>
+<title>여행게시판 글 목록</title>
 
 <style type="text/css">
 .top_bg {
@@ -80,7 +80,7 @@
 
 		<div class="top_bg text-center ">
 
-			<h3 class="p-4">자유게시판</h3>
+			<h3 class="p-4">여행게시판</h3>
 
 		</div>
 

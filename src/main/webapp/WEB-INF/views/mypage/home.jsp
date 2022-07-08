@@ -73,14 +73,14 @@ html, body {
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		//비밀번호수정클릭시 수정 모달 나오게 
+		//비밀번호변경클릭시 수정 모달 나오게 
 		var modifyPasswordModal = $("#password-modify-modal")
 		$("#pw-modify-btn1").click(function() {
 			modifyPasswordModal.modal('show');
 
 		})
 
-		//비번수정 입력 확인 
+		//비번번경 입력 확인 
 		$("#password-modal-btn").click(function() {
 
 			//비번입력 했는지 
@@ -163,7 +163,7 @@ html, body {
 					<div class="nav-link cl">
 
 						<button type="button" class="btn btncl" id="pw-modify-btn1">비밀번호
-							수정</button>
+							변경</button>
 
 						<br />
 

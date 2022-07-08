@@ -39,7 +39,7 @@
 
 		<div class="top_bg text-center ">
 
-			<h3 class="p-4">자유게시판 글보기</h3>
+			<h3 class="p-4">여행게시판 글보기</h3>
 
 		</div>
 		<br>

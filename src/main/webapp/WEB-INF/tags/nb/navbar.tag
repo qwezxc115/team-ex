@@ -93,7 +93,7 @@
 							aria-labelledby="navbarScrollingDropdown">
 
 							<li>
-								<a class="dropdown-item" href="${appRoot}/community/cbhome">자유게시판
+								<a class="dropdown-item" href="${appRoot}/community/cbhome">여행게시판
 								</a>
 							</li>
 
