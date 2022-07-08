@@ -212,7 +212,7 @@ html, body {
 									<input class="btn btn-outline-secondary" type="submit"
 										id="info-modify-btn" value="수정 " />
 									<a id="info-notmodify" class="btn btn-outline-secondary"
-										href="${appRoot }/mypage/mypage"> 취소 </a>
+										href="${appRoot }/mypage/home"> 취소 </a>
 
 								</div>
 							</form>
