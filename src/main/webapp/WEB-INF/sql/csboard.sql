@@ -1,4 +1,4 @@
--- 자유 게시판
+-- 여행 게시판
 USE Triple;
 
 CREATE table C_board(
@@ -12,8 +12,9 @@ CREATE table C_board(
    	 FOREIGN KEY (writer) REFERENCES TP_User(userid) ON DELETE CASCADE
 );
 
+SELECT * FROM C_board;
 
--- 자유게시판 첨부파일  
+-- 여행게시판 첨부파일  
 CREATE TABLE C_board_file (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	bno INT REFERENCES C_board(bno),
@@ -21,18 +22,4 @@ CREATE TABLE C_board_file (
 	FOREIGN KEY (bno) REFERENCES C_board(bno) ON DELETE CASCADE
 );
 
--- 자유게시판 댓글 테이블 
-CREATE TABLE cb_reply (
-	rno INT PRIMARY KEY AUTO_INCREMENT,
-    bno INT NOT NULL,
-    reply VARCHAR(512) NOT NULL,
-    replyer VARCHAR(50) NOT NULL,
-    replyDate TIMESTAMP DEFAULT now(),
-    updateDate TIMESTAMP DEFAULT now(),
-    FOREIGN KEY (bno) REFERENCES C_board(bno)
-);
-
-
-SELECT * FROM C_board;
 SELECT * FROM C_board_file;
-SELECT * FROM cb_reply;

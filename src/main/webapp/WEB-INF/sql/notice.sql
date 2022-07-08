@@ -12,12 +12,3 @@ CREATE TABLE notice(
 );
 
 SELECT * FROM notice;
-
--- cs의 공지사항 파일테이블 생성
-CREATE TABLE notice_file(
-   nfno INT PRIMARY KEY AUTO_INCREMENT,
-    nno INT NOT NULL,
-    fileName VARCHAR(50) NOT NULL,
-    
-    FOREIGN KEY (nno) REFERENCES notice (nno) ON DELETE CASCADE
-);
